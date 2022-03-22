@@ -10,7 +10,9 @@
                 Descrizione: {{ $comic->description }}
             </li>
             <li>
-                <img src="{{ $comic->thumb }}" alt="">
+                <a href="{{ route('comics.show', $comic->id) }}">
+                    <img src="{{ $comic->thumb }}" alt="image">
+                </a>
             </li>
             <li>
                 Prezzo: {{ $comic->price }}
