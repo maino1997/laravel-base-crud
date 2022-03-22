@@ -37,14 +37,17 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        //Prendo i dati da $request che prende i dati dal form che gli viene mandato in POST 
+        //e li salvo in una variabile
         $data = $request->all();
 
-
+        //Istanzio il nuovo comic che voglio creare con i dati del form
         $comic = new Comic();
 
         $comic->fill($data);
         $comic->save();
 
+        //Dopo aver fillato e salvato il nuovo fumetto nel DB reindirizzo l'utente all'index
         return redirect()->route('comics.index');
     }
 
