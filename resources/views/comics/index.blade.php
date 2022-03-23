@@ -36,7 +36,8 @@
                             Tipo: {{ $comic->type }}
                         </li>
                         <a href="{{ route('comics.edit', $comic->id) }}">Modifica</a>
-                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST" class="delete">
+                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST" class="delete"
+                            data-title="{{ $comic->title }}">
                             @method('DELETE')
                             @csrf
                             <button>Elimina</button>
@@ -55,7 +56,8 @@
         formList.forEach(form => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const confermation = confirm('Sei sicuro di voler eleminare questo fumetto?');
+                const title = form.getAttribute('data-title');
+                const confermation = confirm(`Sei sicuro di voler eleminare ${title}?`);
                 if (confermation) {
                     e.target.submit();
                 }
