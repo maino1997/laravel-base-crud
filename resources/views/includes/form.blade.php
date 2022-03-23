@@ -43,9 +43,9 @@
             <input type="text" name="type" id="type" placeholder="type" value="{{ old('type', $comic->type) }}">
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <button class="invia btn btn-danger" type="submit">Invia</button>
+            <button class="invia btn btn-danger m-3" type="submit">Invia</button>
+            <a class="invia btn btn-secondary m-3" href="{{ route('comics.index') }}">Indietro</a>
         </div>
-
     </div>
     </form>
 </div>

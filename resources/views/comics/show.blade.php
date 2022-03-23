@@ -3,28 +3,29 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="content card">
+            <div class="col-12 carta d-flex align-items-center flex-column text-center">
                 <div>
-                    Titolo: {{ $c->title }}
+                    <h3>Titolo</h3> {{ $c->title }}
                 </div>
                 <div>
-                    Descrizione: {{ $c->description }}
+                    <h3>Descrizione: </h3>{{ $c->description }}
                 </div>
                 <div>
                     <img src="{{ $c->thumb }}" alt="image">
                 </div>
                 <div>
-                    Prezzo: {{ $c->price }}
+                    <h3>Prezzo:</h3> {{ $c->price }}
                 </div>
                 <div>
-                    Serie: {{ $c->series }}
+                    <h3>Serie:</h3> {{ $c->series }}
                 </div>
                 <div>
-                    Data di rilascio: {{ $c->sale_date }}
+                    <h3>Data di rilascio:</h3> {{ $c->sale_date }}
                 </div>
                 <div>
-                    Tipo: {{ $c->type }}
+                    <h3>Tipo:</h3> {{ $c->type }}
                 </div>
+                <a class="btn btn-secondary" href="{{ route('comics.index') }}">Indietro</a>
             </div>
         </div>
     </div>
