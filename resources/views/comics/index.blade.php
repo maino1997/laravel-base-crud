@@ -36,7 +36,7 @@
                             Tipo: {{ $comic->type }}
                         </li>
                         <a href="{{ route('comics.edit', $comic->id) }}">Modifica</a>
-                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST" class="delete">
                             @method('DELETE')
                             @csrf
                             <button>Elimina</button>
@@ -46,4 +46,20 @@
             @endforeach
         </div>
     </div>
+@endsection
+
+@section('additional_script')
+    <script>
+        const formList = document.querySelectorAll('.delete');
+
+        formList.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const confermation = confirm('Sei sicuro di voler eleminare questo fumetto?');
+                if (confermation) {
+                    e.target.submit();
+                }
+            });
+        });
+    </script>
 @endsection

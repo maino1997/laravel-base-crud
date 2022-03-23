@@ -33,7 +33,7 @@
         </div>
     </nav>
     @yield('content')
-
+    @yield('additional_script')
 </body>
 
 </html>
