@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <form action="{{ route('comics.update', $comic->id) }}" method="POST">
+    <form action="{{ route('comics.update', $comic->idphp) }}" method="POST">
         @method('PUT')
         @csrf
         <form action="{{ route('comics.store') }}" method="POST">
