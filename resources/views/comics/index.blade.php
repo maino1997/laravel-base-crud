@@ -26,6 +26,7 @@
             <li>
                 Tipo: {{ $comic->type }}
             </li>
+            <a href="{{ route('comics.edit', $comic->id) }}">Modifica</a>
         @endforeach
     </ul>
 @endsection
