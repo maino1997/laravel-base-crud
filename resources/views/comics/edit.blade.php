@@ -1,6 +1,15 @@
 @extends('layouts.main')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('comics.update', $comic->id) }}" method="POST">
         @method('PUT')
         @csrf

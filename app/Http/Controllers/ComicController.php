@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Validation\Rule;
 
 class ComicController extends Controller
 {
@@ -37,6 +38,14 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'unique:comics', 'min:3'],
+            'thumb' => ['string', 'min:5'],
+            'price' => ['required', 'numeric'],
+            'series' => ['required', 'string', 'min:3'],
+            'sale_date' => ['required', 'min:5'],
+            'type' => ['required', 'string', 'min:5']
+        ]);
         //Prendo i dati da $request che prende i dati dal form che gli viene mandato in POST 
         //e li salvo in una variabile
         $data = $request->all();
@@ -79,16 +88,24 @@ class ComicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
+        $request->validate([
+            'title' => ['required', 'string', Rule::unique('comics')->ignore($comic->id), 'min:3'],
+            'thumb' => ['string', 'min:5'],
+            'price' => ['required', 'numeric'],
+            'series' => ['required', 'string', 'min:3'],
+            'sale_date' => ['required', 'min:5'],
+            'type' => ['required', 'string', 'min:5']
+        ]);
+
         $data = $request->all();
 
-        $comic = Comic::findOrFail($id);
 
-        $comic->fill($data);
+        $comic->update($data);
         $comic->save();
 
         return redirect()->route('comics.show', compact('comic'));
