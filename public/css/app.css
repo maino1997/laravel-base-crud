@@ -12173,3 +12173,7 @@ fieldset:disabled .btn {
   }
 }
 
+ul {
+  list-style: none;
+}
+
