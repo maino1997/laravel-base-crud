@@ -37,8 +37,8 @@
             @enderror
         </div>
         <div class="col-4">
-            <input type="text" name="thumb" id="thumb" placeholder="immagine"
-                value="{{ old('thumb', $comic->thumb) }}" class="@error('thumb') is-invalid @enderror">
+            <input type="text" name="thumb" placeholder="immagine" value="{{ old('thumb', $comic->thumb) }}"
+                class="@error('thumb') is-invalid @enderror" id="image-input">
             @error('thumb')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -81,6 +81,10 @@
                 </div>
             @enderror
         </div>
+        <div class="col-2">
+            <img src="http://www.asdalcione.it/wp-content/uploads/2016/08/jk-placeholder-image-1.jpg" alt="placeholder"
+                class="img-fluid" width="200" id="image-src">
+        </div>
         <div class="col-12 d-flex justify-content-center">
             <button class="invia btn btn-danger m-3" type="submit">Invia</button>
             <a class="invia btn btn-secondary m-3" href="{{ route('comics.index') }}">Indietro</a>
@@ -88,3 +92,17 @@
     </div>
     </form>
 </div>
+
+<script>
+    const
+        def = 'http://www.asdalcione.it/wp-content/uploads/2016/08/jk-placeholder-image-1.jpg';
+    const prevInput = document.getElementById('image-input');
+    const prevImg = document.getElementById('image-src');
+
+    prevInput.addEventListener('change', function() {
+        const url = this.value;
+        if (url) prevImg.setAttribute('src', url);
+        else prevImg.setAttribute('src',
+            def);
+    })
+</script>
