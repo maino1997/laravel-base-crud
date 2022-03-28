@@ -3,11 +3,7 @@
 @section('content')
     <div class="container">
 
-        @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
+        @include('includes.alert')
 
         {{-- MarkUp Table Version --}}
         <table class="table table-dark">
