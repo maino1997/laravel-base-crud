@@ -82,8 +82,8 @@
             @enderror
         </div>
         <div class="col-2">
-            <img src="http://www.asdalcione.it/wp-content/uploads/2016/08/jk-placeholder-image-1.jpg" alt="placeholder"
-                class="img-fluid" width="200" id="image-src">
+            <img src="{{ $comic->thumb ?? 'http://www.asdalcione.it/wp-content/uploads/2016/08/jk-placeholder-image-1.jpg' }}"
+                alt="placeholder" class="img-fluid" width="200" id="image-src">
         </div>
         <div class="col-12 d-flex justify-content-center">
             <button class="invia btn btn-danger m-3" type="submit">Invia</button>
